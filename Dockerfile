@@ -16,6 +16,8 @@ ENTRYPOINT ["sh", /${development_toolchain}]
 
 RUN apt update
 RUN apt install -y git
+RUN apt install make
 RUN git clone https://github.com/PX4/Firmware.git
 RUN cd ./Firmware
-RUN make px4_sitl jmavsim
+RUN make check_px4_sitl_default
+CMD jmavsim  
